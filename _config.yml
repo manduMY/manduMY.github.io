@@ -1,0 +1,33 @@
+title: manduMY.dev
+tagline: 기술 정리 블로그
+description: 기술 정리 블로그
+url: "https://mandumy.github.io"
+baseurl: ""
+author: manduMY
+email: poi31320@gmail.com
+github_username: manduMY
+timezone: Asia/Seoul
+
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+kramdown:
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .gitignore

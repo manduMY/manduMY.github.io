@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1>기록</h1>
+  <p>시스템 설계, 장애 대응, 그리고 매일 마주친 문제를 어떻게 풀었는지 정리합니다.</p>
+</section>
+
+<div class="sec-head"><h2>Recent</h2><span class="line"></span></div>
+
+<section class="posts">
+  {% for post in site.posts %}
+  <a class="post" href="{{ post.url | relative_url }}">
+    <div class="date">{{ post.date | date: "%Y.%m.%d" }}<span class="rt">{{ post.content | number_of_words | divided_by: 300 | plus: 1 }}분</span></div>
+    <h3>{{ post.title }}</h3>
+    {% if post.excerpt %}<p class="excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 110 }}</p>{% endif %}
+    {% if post.tags %}<div class="tags">{% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>{% endif %}
+  </a>
+  {% endfor %}
+</section>

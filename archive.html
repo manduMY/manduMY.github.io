@@ -1,0 +1,23 @@
+---
+layout: default
+title: 글 전체
+nav: archive
+permalink: /archive/
+---
+<section class="hero"><h1>글 전체</h1><p>지금까지 쓴 글 {{ site.posts | size }}개.</p></section>
+
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year in posts_by_year %}
+<div class="sec-head"><h2>{{ year.name }}</h2><span class="line"></span></div>
+<ul class="archive-list">
+  {% for post in year.items %}
+  <li>
+    <a href="{{ post.url | relative_url }}">
+      <span class="a-date">{{ post.date | date: "%m.%d" }}</span>
+      <span class="a-title">{{ post.title }}</span>
+    </a>
+    {% if post.tags %}<span class="a-tags">{% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endfor %}
