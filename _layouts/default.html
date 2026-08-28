@@ -22,9 +22,19 @@
     <nav class="side">
       <a class="{% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}"><span class="ic">›</span> 홈</a>
       <a class="{% if page.nav == 'archive' %}active{% endif %}" href="{{ '/archive/' | relative_url }}"><span class="ic">✎</span> 글 전체</a>
-      <a class="{% if page.nav == 'tags' %}active{% endif %}" href="{{ '/tags/' | relative_url }}"><span class="ic">#</span> 태그</a>
-      <a class="{% if page.nav == 'about' %}active{% endif %}" href="{{ '/about/' | relative_url }}"><span class="ic">◎</span> 소개</a>
     </nav>
+
+    {% assign sorted_tags = site.tags | sort %}
+    {% if sorted_tags.size > 0 %}
+    <div class="side-section">
+      <div class="side-label">주제별</div>
+      <nav class="side topics">
+        {% for tag in sorted_tags %}
+        <a href="{{ '/tags/' | relative_url }}#{{ tag[0] | slugify }}"><span class="hash">#</span>{{ tag[0] }}<span class="cnt">{{ tag[1] | size }}</span></a>
+        {% endfor %}
+      </nav>
+    </div>
+    {% endif %}
     <div class="side-foot">
       <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="{{ '/feed.xml' | relative_url }}">RSS ↗</a>

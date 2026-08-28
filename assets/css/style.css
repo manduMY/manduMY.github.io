@@ -14,7 +14,7 @@ a{color:inherit;text-decoration:none}
 .layout{display:grid;grid-template-columns:250px 1fr;min-height:100vh;max-width:1120px;margin:0 auto}
 
 /* ── sidebar ── */
-aside{border-right:1px solid var(--border-soft);padding:34px 26px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column}
+aside{border-right:1px solid var(--border-soft);padding:34px 26px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow-y:auto}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:16px;font-weight:500;margin-bottom:6px}
 .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .brand .g{color:var(--fg-mute)}
@@ -24,6 +24,16 @@ nav.side a{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radi
 nav.side a .ic{width:16px;text-align:center;opacity:.6;font-size:14px}
 nav.side a:hover{background:var(--panel);color:var(--fg)}
 nav.side a.active{background:var(--panel);color:var(--fg);font-weight:500;box-shadow:inset 2px 0 0 var(--accent)}
+
+/* 주제별 섹션 */
+.side-section{margin-top:26px}
+.side-label{font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--fg-mute);padding:0 12px;margin-bottom:8px}
+nav.topics a{display:flex;align-items:center;gap:2px;padding:7px 12px;border-radius:8px;font-size:13.5px;color:var(--fg-dim);transition:.15s}
+nav.topics a .hash{color:var(--fg-mute);margin-right:5px}
+nav.topics a .cnt{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fg-mute);background:var(--panel);border-radius:10px;padding:1px 7px}
+nav.topics a:hover{background:var(--panel);color:var(--fg)}
+nav.topics a:hover .hash{color:var(--accent)}
+
 .side-foot{margin-top:auto;padding-top:24px;border-top:1px solid var(--border-soft);font-family:var(--mono);font-size:12px;color:var(--fg-mute);display:flex;flex-direction:column;gap:7px}
 .side-foot a:hover{color:var(--accent)}
 
@@ -115,6 +125,11 @@ main{padding:52px 56px;min-width:0}
   .tagline{margin-bottom:0}
   nav.side{flex-direction:row;flex-wrap:wrap;gap:4px}
   nav.side a.active{box-shadow:none;text-decoration:underline;text-decoration-color:var(--accent)}
+  .side-section{margin-top:0;flex:1 1 100%}
+  .side-label{padding:0;margin-bottom:6px}
+  nav.topics{flex-direction:row;flex-wrap:wrap;gap:6px}
+  nav.topics a{border:1px solid var(--border);border-radius:20px;padding:4px 11px}
+  nav.topics a .cnt{margin-left:4px;background:none;padding:0}
   .side-foot{margin-top:0;padding-top:0;border-top:none;flex-direction:row;gap:14px;flex-wrap:wrap}
   main{padding:32px 22px}
 }
