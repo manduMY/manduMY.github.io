@@ -1,0 +1,29 @@
+---
+layout: default
+title: 주제별
+nav: topics
+permalink: /topics/
+---
+<section class="hero"><h1>주제별</h1><p>관심 주제로 골라 읽어보세요.</p></section>
+
+{% for topic in site.topics %}
+<div class="sec-head" id="{{ topic.name | slugify }}"><h2>{{ topic.name }}</h2><span class="line"></span></div>
+<ul class="archive-list">
+  {% assign shown = 0 %}
+  {% for post in site.posts %}
+    {% assign matched = false %}
+    {% for t in post.tags %}{% if topic.tags contains t %}{% assign matched = true %}{% endif %}{% endfor %}
+    {% if matched %}
+      {% assign shown = shown | plus: 1 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          <span class="a-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+          <span class="a-title">{{ post.title }}</span>
+        </a>
+        {% if post.tags %}<span class="a-tags">{% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</span>{% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+  {% if shown == 0 %}<li class="empty">아직 글이 없어요.</li>{% endif %}
+</ul>
+{% endfor %}

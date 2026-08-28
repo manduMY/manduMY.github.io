@@ -18,6 +18,20 @@ kramdown:
 plugins:
   - jekyll-feed
 
+# ── 주제 정의 ──────────────────────────────────────────────
+# 왼쪽 사이드바 "주제별"에 직접 정한 주제만 노출된다.
+# 글에 단 태그(tags)가 아래 tags 목록에 하나라도 걸리면 그 주제로 묶인다.
+# 주제를 추가/이름변경/재배치하려면 이 목록만 고치면 된다.
+topics:
+  - name: 백엔드 · API
+    tags: [API Design, MSA, Idempotency, Payments]
+  - name: 데이터베이스
+    tags: [MySQL, Index, Redis, Cache]
+  - name: 인프라 · 관측
+    tags: [Kafka, Observability]
+  - name: 트러블슈팅 · 성능
+    tags: [장애대응, Performance]
+
 defaults:
   - scope:
       path: ""

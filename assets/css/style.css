@@ -68,6 +68,7 @@ main{padding:52px 56px;min-width:0}
 .archive-list .a-title{font-size:15px;font-weight:500;transition:.15s}
 .archive-list a:hover .a-title{color:var(--accent)}
 .archive-list .a-tags{display:flex;gap:6px}
+.archive-list li.empty{color:var(--fg-mute);font-size:14px}
 .tag-cloud{display:flex;flex-wrap:wrap;gap:9px;margin:6px 0 8px}
 .tag-chip{font-family:var(--mono);font-size:13px;color:var(--fg-dim);border:1px solid var(--border);padding:5px 12px;border-radius:20px;transition:.15s}
 .tag-chip span{color:var(--fg-mute);font-size:11px;margin-left:3px}

@@ -24,13 +24,18 @@
       <a class="{% if page.nav == 'archive' %}active{% endif %}" href="{{ '/archive/' | relative_url }}"><span class="ic">✎</span> 글 전체</a>
     </nav>
 
-    {% assign sorted_tags = site.tags | sort %}
-    {% if sorted_tags.size > 0 %}
+    {% if site.topics.size > 0 %}
     <div class="side-section">
       <div class="side-label">주제별</div>
       <nav class="side topics">
-        {% for tag in sorted_tags %}
-        <a href="{{ '/tags/' | relative_url }}#{{ tag[0] | slugify }}"><span class="hash">#</span>{{ tag[0] }}<span class="cnt">{{ tag[1] | size }}</span></a>
+        {% for topic in site.topics %}
+          {% assign tcount = 0 %}
+          {% for post in site.posts %}
+            {% assign matched = false %}
+            {% for t in post.tags %}{% if topic.tags contains t %}{% assign matched = true %}{% endif %}{% endfor %}
+            {% if matched %}{% assign tcount = tcount | plus: 1 %}{% endif %}
+          {% endfor %}
+        <a href="{{ '/topics/' | relative_url }}#{{ topic.name | slugify }}">{{ topic.name }}<span class="cnt">{{ tcount }}</span></a>
         {% endfor %}
       </nav>
     </div>
